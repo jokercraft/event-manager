@@ -7,10 +7,10 @@ from rest_framework.decorators import api_view
 # Views for End-Points.
 
 # To get an event by 'id'
-@api_view(['GET','PUT','DELETE'])
+@api_view(['GET'])
 def EventView(request, id):
     """
-    API endpoint that allows events to be viewed, deleted or edited.
+    API endpoint that allows events to be viewed.
     """
     try:
         event = Event.objects.get(id=id)
@@ -35,10 +35,10 @@ def UpdateEvent(request, id):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 # To get an session by 'id'
-@api_view(['GET','PUT','DELETE'])
+@api_view(['GET'])
 def SessionView(request, id):
     """
-    API endpoint that allows sessions to be viewed, deleted or edited.
+    API endpoint that allows sessions to be viewed.
     """
     try:
         event = Session.objects.get(id=id)
