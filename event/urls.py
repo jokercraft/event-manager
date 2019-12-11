@@ -1,18 +1,16 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from .views import (
     
     EventView, 
-    EventViewList, 
     SessionView, 
-    SessionViewList, 
-    UpdateEvent, 
     
     )
 
+router = routers.DefaultRouter()
+router.register("events", EventView)
+router.register("sessions", SessionView)
+
 urlpatterns = [
-    path('event/<id>/', EventView, name='detail'),
-    path('event/<id>/update', UpdateEvent, name='detail'),
-    path('event/', EventViewList),
-    path('session/<id>/', SessionView),
-    path('session/', SessionViewList),
-]
+    path('', include(router.urls)),
+    ]
