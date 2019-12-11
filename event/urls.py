@@ -7,6 +7,7 @@ from .views import (
     
     )
 
+# Router registration for custom api end-point urls
 router = routers.DefaultRouter()
 router.register("events", EventView)
 router.register("sessions", SessionView)
