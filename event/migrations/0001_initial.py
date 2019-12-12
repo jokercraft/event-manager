@@ -2,7 +2,6 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import timezone_field.fields
 
 
 class Migration(migrations.Migration):
@@ -30,7 +29,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200)),
                 ('start_date', models.DateField()),
                 ('end_date', models.DateField()),
-                ('timezone', timezone_field.fields.TimeZoneField()),
+                ('timezone', models.CharField(max_length=100)),
                 ('sessions', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='event.Session')),
             ],
         ),
