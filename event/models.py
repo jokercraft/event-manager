@@ -7,7 +7,7 @@ class Session(models.Model):
     name = models.CharField(max_length=200)
     start_date = models.DateField()
     end_date = models.DateField()
-    speaker = models.CharField(max_length=100)
+    speaker = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -18,7 +18,8 @@ class Event(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     timezone = models.CharField(max_length=100)
-    sessions = models.ForeignKey(Session, blank=True, null=True, on_delete=models.CASCADE)
+    sessions = models.ManyToManyField(
+        Session, blank=True, null=True)
 
     def __str__(self):
         return self.name

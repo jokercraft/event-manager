@@ -23,8 +23,8 @@ class EventView(viewsets.ModelViewSet):
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def update(self, request, pk=id):
-        serializer = SessionSerializer(data=request.data)
+    def put(self, request, pk=id):
+        serializer = EventSerializer(data=request.data)
         if serializer.is_valid():
             if serializer.validated_data["start_date"] > serializer.validated_data["end_date"]:
                 return Response({"Failed": "Start Date must be before End Date!"}, status=status.HTTP_400_BAD_REQUEST)
@@ -51,7 +51,7 @@ class SessionView(viewsets.ModelViewSet):
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)  
 
-    def update(self, request, pk=id):
+    def put(self, request, pk=id):
         serializer = SessionSerializer(data=request.data)
         if serializer.is_valid():
             if serializer.validated_data["start_date"] > serializer.validated_data["end_date"]:
